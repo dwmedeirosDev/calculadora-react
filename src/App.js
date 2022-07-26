@@ -1,25 +1,146 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const Calculator = styled.div`
+
+  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace;
+  }
+
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  h1{
+    color: white;
+  }
+
+  h2{
+    color: white;
+    font-size: 1.8rem;
+    height: 50px;
+  }
+`
+
+export const Display = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  input{
+    font-weight: bold;
+    font-size: 1.8rem;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+  }
+`
+
+export const Button = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  button{
+    font-weight: 400;
+    padding: 5px;
+    font-size: 1.8rem;
+    border-radius: 4px;
+    transition: 0.1s all;
+  }
+
+  button:hover{
+    transform: scale(1.1);
+  }
+
+  button:last-child{
+    background-color: red;
+    font-weight: bold;
+  }
+`
+
+export default class App extends Component{
+
+  state ={
+    num1: "",
+    num2: "",
+    result: ""
+  }
+
+  addition = () => {
+    this.setState({
+      result: this.state.num1 + this.state.num2
+    })
+  }
+
+  
+  subtraction = () => {
+    this.setState({
+      result: this.state.num1 - this.state.num2
+    })
+  }
+
+  multiplication = () => {
+    this.setState({
+      result: this.state.num1 * this.state.num2
+    })
+  }
+
+  division = () =>{
+    this.setState({
+      result: this.state.num1 / this.state.num2
+    })
+  }
+
+  clear = () => {
+    this.setState({
+      result: "",
+      num1: "",
+      num2: ""
+    })
+  }
+
+  handleChange1 = (event) => {
+    this.setState({
+      num1: parseInt(event.target.value)
+    })
+  }
+
+  handleChange2 = (event) => {
+    this.setState({
+      num2: parseInt(event.target.value)
+    })
+  }
+
+  render(){
+    return(
+      <Calculator>
+        <h1>Calculator</h1>
+        <Display>
+          <input type="number" onChange={this.handleChange1}/>
+          <input type="number" onChange={this.handleChange2}/>
+        </Display>
+        <Button>
+          <button onClick={this.addition}>+</button>
+          <button onClick={this.subtraction}>-</button>
+          <button onClick={this.multiplication}>x</button>
+          <button onClick={this.division}>÷</button>
+          <button onClick={this.clear}>c</button>
+        </Button>
+        <h2>{this.state.result}</h2>
+      </Calculator>
+    )
+  }
 }
-
-export default App;
