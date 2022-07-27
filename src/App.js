@@ -2,16 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 export const Calculator = styled.div`
-
   @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
-
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inconsolata', monospace;
-  }
-
   margin: 0 auto;
   width: 100%;
   max-width: 400px;
@@ -81,7 +72,7 @@ export default class App extends Component{
 
   addition = () => {
     this.setState({
-      result: this.state.num1 + this.state.num2
+      result: Number(this.state.num1) + Number(this.state.num2)
     })
   }
 
@@ -114,13 +105,13 @@ export default class App extends Component{
 
   handleChange1 = (event) => {
     this.setState({
-      num1: parseInt(event.target.value)
+      num1: event.target.value
     })
   }
 
   handleChange2 = (event) => {
     this.setState({
-      num2: parseInt(event.target.value)
+      num2: event.target.value
     })
   }
 
@@ -129,8 +120,8 @@ export default class App extends Component{
       <Calculator>
         <h1>Calculator</h1>
         <Display>
-          <input type="number" onChange={this.handleChange1}/>
-          <input type="number" onChange={this.handleChange2}/>
+          <input type="number" value={this.state.num1} onChange={this.handleChange1}/>
+          <input type="number" value={this.state.num2} onChange={this.handleChange2}/>
         </Display>
         <Button>
           <button onClick={this.addition}>+</button>
