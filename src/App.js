@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 export const Calculator = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
   margin: 0 auto;
   width: 100%;
   max-width: 400px;
