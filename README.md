@@ -1,4 +1,4 @@
-## Calculadora simples
+## Calculadora simples 🧮
 
 **1.** Crie funções para cada botão, de modo que executem a operação correspondente ao serem clicados.
 
